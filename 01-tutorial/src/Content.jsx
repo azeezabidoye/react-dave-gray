@@ -14,7 +14,7 @@ const Content = () => {
     console.log(`You clicked to see ${firstName}`);
   };
   const handleClick3 = (e) => {
-    console.log(e.target);
+    console.log(e.target.innerText);
   };
   return (
     <main>
