@@ -13,6 +13,9 @@ const Content = () => {
   const handleClick2 = (firstName) => {
     console.log(`You clicked to see ${firstName}`);
   };
+  const handleClick3 = (e) => {
+    console.log(e.target);
+  };
   return (
     <main>
       <p>
@@ -20,6 +23,7 @@ const Content = () => {
       </p>
       <button onClick={handleClick}>Click Me</button>
       <button onClick={() => handleClick2("Azeez")}>Click Me</button>
+      <button onClick={(e) => handleClick3(e)}>Click Me</button>
     </main>
   );
 };
