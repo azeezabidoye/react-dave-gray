@@ -6,21 +6,33 @@ const Content = () => {
     {
       id: 1,
       checked: true,
-      item: "One half pound bag of Cocoa Covered Almonds",
+      itemName: "One half pound bag of Cocoa Covered Almonds",
     },
     {
       id: 2,
       checked: false,
-      item: "Item 2",
+      itemName: "Item 2",
     },
     {
       id: 3,
       checked: false,
-      item: "Item 3",
+      itemName: "Item 3",
     },
   ]);
 
-  return <main></main>;
+  return (
+    <main>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id} className="item">
+            <input type="checkbox" checked={item.checked} />
+            <label>{item.itemName}</label>
+            <button>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 };
 
 export default Content;
