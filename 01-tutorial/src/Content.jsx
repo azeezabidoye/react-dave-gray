@@ -29,6 +29,10 @@ const Content = () => {
     localStorage.setItems("shoppinglist", JSON.stringify(listItems));
   };
 
+  const handleDelete = (id) => {
+    console.log(`Delete this Id: ${id}`);
+  };
+
   return (
     <main>
       <ul>
@@ -39,10 +43,17 @@ const Content = () => {
               checked={item.checked}
               onChange={() => handleCheck(item.id)}
             />
-            <label onDoubleClick={() => handleCheck(item.id)}>
+            <label
+              onDoubleClick={() => handleCheck(item.id)}
+              style={item.checked ? { textDecoration: "line-through" } : null}
+            >
               {item.itemName}
             </label>
-            <FaTrash role="button" tabIndex={0} />
+            <FaTrash
+              role="button"
+              tabIndex={0}
+              onClick={() => handleDelete(item.id)}
+            />
           </li>
         ))}
       </ul>
