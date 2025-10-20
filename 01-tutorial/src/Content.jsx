@@ -30,7 +30,9 @@ const Content = () => {
   };
 
   const handleDelete = (id) => {
-    console.log(`Delete this Id: ${id}`);
+    const listItems = items.filter((item) => item.id !== id);
+    setItems(listItems);
+    localStorage.setItems("shoppinglist", JSON.stringify(listItems));
   };
 
   return (
