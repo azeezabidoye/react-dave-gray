@@ -21,12 +21,23 @@ const Content = () => {
     },
   ]);
 
+  const handleCheck = (id) => {
+    const listItems = items.map((item) =>
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
+    setItems(listItems);
+  };
+
   return (
     <main>
       <ul>
         {items.map((item) => (
           <li key={item.id} className="item">
-            <input type="checkbox" checked={item.checked} />
+            <input
+              type="checkbox"
+              checked={item.checked}
+              onChange={() => handleCheck(item.id)}
+            />
             <label>{item.itemName}</label>
             <FaTrash role="button" tabIndex={0} />
           </li>
