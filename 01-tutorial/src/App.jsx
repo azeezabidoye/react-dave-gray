@@ -6,7 +6,7 @@ import Footer from "./Footer";
 function App() {
   return (
     <>
-      <Header />
+      <Header title="Grocery List" />
       <Content />
       <Footer />
     </>
