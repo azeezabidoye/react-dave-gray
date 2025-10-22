@@ -1,27 +1,15 @@
-import { FaTrash } from "react-icons/fa";
+import LineItem from "./LineItem";
 
 const ItemList = ({ items, handleCheck, handleDelete }) => {
   return (
     <ul>
       {items.map((item) => (
-        <li key={item.id} className="item">
-          <input
-            type="checkbox"
-            checked={item.checked}
-            onChange={() => handleCheck(item.id)}
-          />
-          <label
-            onDoubleClick={() => handleCheck(item.id)}
-            style={item.checked ? { textDecoration: "line-through" } : null}
-          >
-            {item.itemName}
-          </label>
-          <FaTrash
-            role="button"
-            tabIndex={0}
-            onClick={() => handleDelete(item.id)}
-          />
-        </li>
+        <LineItem
+          key={item.id}
+          item={item}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
       ))}
     </ul>
   );
