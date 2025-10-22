@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa";
 
-const AddItem = () => {
+const AddItem = ({ newItem, setNewItem, handleSubmit }) => {
   return (
     <form className="addForm">
       <label htmlFor="AddItem">Add Item</label>
