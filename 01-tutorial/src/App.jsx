@@ -25,6 +25,19 @@ function App() {
 
   const [newItem, setNewItem] = useState("");
 
+  const setAndSaveItems = (newItems) => {
+    setItems(newItems);
+    localStorage.setItems("shoppinglist", JSON.stringify(newItems));
+  };
+
+  const addItem = (item) => {
+    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    const myNewItems = { id, checked: false, itemName: item };
+    const listItems = [...items, myNewItems];
+    setItems(listItems);
+    localStorage.setItems("shoppinglist", JSON.stringify(listItems));
+  };
+
   const handleCheck = (id) => {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
@@ -41,8 +54,12 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Submitted!!!`);
+    if (!newItem) return;
+    // addItem Function
+    addItem(newItem);
+    setNewItem(" ");
   };
+
   return (
     <>
       <Header title="Grocery List" />
