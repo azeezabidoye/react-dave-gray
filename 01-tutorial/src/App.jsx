@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
-import SearchItem from "./SearchItem";
 import AddItem from "./AddItem";
+import SearchItem from "./SearchItem";
 import Content from "./Content";
 import Footer from "./Footer";
 
@@ -60,12 +60,12 @@ function App() {
   return (
     <>
       <Header title="Grocery List" />
-      <SearchItem search={search} setSearch={setSearch} />
       <AddItem
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
       />
+      <SearchItem search={search} setSearch={setSearch} />
       <Content
         items={items}
         handleCheck={handleCheck}
