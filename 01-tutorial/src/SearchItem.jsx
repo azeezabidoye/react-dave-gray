@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchItem = () => {
+const SearchItem = ({ search, setSearch }) => {
   return (
     <form className="searchForm" onSubmit={(e) => preventDefault()}>
       <label htmlFor="search">Search</label>
