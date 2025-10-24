@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import AddItem from "./AddItem";
 import Content from "./Content";
 import Footer from "./Footer";
 
 function App() {
+  // 1️⃣ Load initial data safely from localStorage
   const [items, setItems] = useState(() => {
-    const savedItems = localStorage.getItem("shoppinglist");
-    return savedItems ? JSON.parse(savedItems) : [];
+    try {
+      const savedItems = localStorage.getItem("shoppinglist");
+      return savedItems ? JSON.parse(savedItems) : [];
+    } catch (error) {
+      console.error("Error reading localStorage:", error);
+      return [];
+    }
   });
+
+  // 2️⃣ Save updated items back to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("shoppinglist", JSON.stringify(items));
+  }, [items]);
 
   const [newItem, setNewItem] = useState("");
 
@@ -41,7 +52,7 @@ function App() {
     if (!newItem) return;
     // addItem Function
     addItem(newItem);
-    setNewItem(" ");
+    setNewItem("");
   };
 
   return (
