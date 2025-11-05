@@ -58,7 +58,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="App">
       <Header title="Grocery List" />
       <AddItem
         newItem={newItem}
@@ -67,12 +67,15 @@ function App() {
       />
       <SearchItem search={search} setSearch={setSearch} />
       <Content
-        items={items}
+        items={items.filter((item) =>
+          item.itemName.toLowerCase().includes(search.toLowerCase())
+        )}
+        // items={items}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       />
       <Footer length={items.length} />
-    </>
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@ const SearchItem = ({ search, setSearch }) => {
         role="searchbox"
         placeholder="Search item..."
         value={search}
-        onChange={(e) => setSearch(e)}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </form>
   );
