@@ -18,16 +18,20 @@ function App() {
   });
 
   // 2️⃣ Save updated items back to localStorage whenever they change
+  // useEffect(() => {
+  //   localStorage.setItem("shoppinglist", JSON.stringify(items));
+  // }, [items]);
+
   useEffect(() => {
-    localStorage.setItem("shoppinglist", JSON.stringify(items));
-  }, [items]);
+    console.log("Load time");
+  }, []);
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
-    localStorage.setItems("shoppinglist", JSON.stringify(newItems));
+    localStorage.setItem("shoppinglist", JSON.stringify(newItems));
   };
 
   const addItem = (item) => {
