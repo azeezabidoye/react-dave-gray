@@ -18,13 +18,13 @@ function App() {
   });
 
   // 2️⃣ Save updated items back to localStorage whenever they change
-  // useEffect(() => {
-  //   localStorage.setItem("shoppinglist", JSON.stringify(items));
-  // }, [items]);
-
   useEffect(() => {
-    console.log("Load time");
-  }, []);
+    localStorage.setItem("shoppinglist", JSON.stringify(items));
+  }, [items]);
+
+  // useEffect(() => {
+  //   console.log("Load time");
+  // }, []);
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
