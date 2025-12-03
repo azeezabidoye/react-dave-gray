@@ -14,13 +14,13 @@ function App() {
       try {
         const response = await fetch(API_URL);
         const listItems = await response.json();
-        setItems(listItems);
         console.log(listItems);
+        setItems(listItems);
       } catch (error) {
-        console.log(error.stack);
+        console.log(error);
       }
-      (() => fetchItems())();
     };
+    fetchItems();
   }, []);
 
   // 1️⃣ Load initial data safely from localStorage
@@ -87,10 +87,10 @@ function App() {
       />
       <SearchItem search={search} setSearch={setSearch} />
       <Content
-        items={items.filter((item) =>
-          item.itemName.toLowerCase().includes(search.toLowerCase())
-        )}
-        // items={items}
+        // items={items.filter((item) =>
+        //   item.itemName.toLowerCase().includes(search.toLowerCase())
+        // )}
+        items={items}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       />
