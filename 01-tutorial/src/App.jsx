@@ -9,6 +9,19 @@ function App() {
   const API_URL = "http://localhost:3500/items";
 
   const [items, setItems] = useState([]);
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const listItems = await response.json();
+        setItems(listItems);
+        console.log(listItems);
+      } catch (error) {
+        console.log(error.stack);
+      }
+      (() => fetchItems())();
+    };
+  }, []);
 
   // 1️⃣ Load initial data safely from localStorage
   // const [items, setItems] = useState(() => {
