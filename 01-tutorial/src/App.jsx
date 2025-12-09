@@ -6,7 +6,7 @@ import Content from "./Content";
 import Footer from "./Footer";
 
 function App() {
-  const API_URL = "http://localhost:3500/items";
+  const API_URL = "http://localhost:3500/itemss";
 
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -14,10 +14,13 @@ function App() {
       try {
         const response = await fetch(API_URL);
         const listItems = await response.json();
+        console.log(response.status);
+        if (!response.ok) throw Error("Did not receive the expected data");
         console.log(listItems);
         setItems(listItems);
+        setFetchError(null);
       } catch (error) {
-        console.log(error);
+        setFetchError(error.message);
       }
     };
     fetchItems();
@@ -41,6 +44,7 @@ function App() {
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
+  const [fetchError, setFetchError] = useState(null);
 
   // const setAndSaveItems = (newItems) => {
   //   setItems(newItems);
