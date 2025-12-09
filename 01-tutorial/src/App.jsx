@@ -90,14 +90,17 @@ function App() {
         handleSubmit={handleSubmit}
       />
       <SearchItem search={search} setSearch={setSearch} />
-      <Content
-        items={items.filter((item) =>
-          item.itemName.toLowerCase().includes(search.toLowerCase())
-        )}
-        // items={items}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
+      <main>
+        {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
+        <Content
+          items={items.filter((item) =>
+            item.itemName.toLowerCase().includes(search.toLowerCase())
+          )}
+          // items={items}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
+      </main>
       <Footer length={items.length} />
     </div>
   );
