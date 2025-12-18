@@ -6,7 +6,7 @@ import Content from "./Content";
 import Footer from "./Footer";
 
 function App() {
-  const API_URL = "http://localhost:3500/itemsss";
+  const API_URL = "http://localhost:3500/items";
 
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -15,7 +15,9 @@ function App() {
         const response = await fetch(API_URL);
         const listItems = await response.json();
         console.log(response.status);
-        if (!response.ok) throw Error("Did not receive the expected data");
+        if (response.status != 200) {
+          throw Error("Did not receive the expected data");
+        }
         console.log(listItems);
         setItems(listItems);
         setFetchError(null);
@@ -96,8 +98,9 @@ function App() {
       />
       <SearchItem search={search} setSearch={setSearch} />
       <main>
+        {isLoading && <p>Loading items...</p>}
         {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
-        {!fetchError && isLoading && (
+        {!fetchError && !isLoading && (
           <Content
             items={items.filter((item) =>
               item.itemName.toLowerCase().includes(search.toLowerCase())
