@@ -23,7 +23,9 @@ function App() {
         setFetchError(error.message);
       }
     };
-    fetchItems();
+    setTimeout(() => {
+      fetchItems();
+    }, 2000);
   }, []);
 
   // 1️⃣ Load initial data safely from localStorage
@@ -45,6 +47,7 @@ function App() {
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
   const [fetchError, setFetchError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // const setAndSaveItems = (newItems) => {
   //   setItems(newItems);
