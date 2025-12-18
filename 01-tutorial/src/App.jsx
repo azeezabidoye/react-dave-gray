@@ -21,6 +21,8 @@ function App() {
         setFetchError(null);
       } catch (error) {
         setFetchError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
     setTimeout(() => {
