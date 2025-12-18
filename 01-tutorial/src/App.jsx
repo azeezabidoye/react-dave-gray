@@ -6,7 +6,7 @@ import Content from "./Content";
 import Footer from "./Footer";
 
 function App() {
-  const API_URL = "http://localhost:3500/itemss";
+  const API_URL = "http://localhost:3500/items";
 
   const [items, setItems] = useState([]);
   useEffect(() => {
