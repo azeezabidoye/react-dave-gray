@@ -6,7 +6,7 @@ import Content from "./Content";
 import Footer from "./Footer";
 
 function App() {
-  const API_URL = "http://localhost:3500/items";
+  const API_URL = "http://localhost:3500/itemsss";
 
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -97,7 +97,7 @@ function App() {
       <SearchItem search={search} setSearch={setSearch} />
       <main>
         {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
-        {!fetchError && (
+        {!fetchError && isLoading && (
           <Content
             items={items.filter((item) =>
               item.itemName.toLowerCase().includes(search.toLowerCase())
