@@ -80,13 +80,13 @@ function App() {
     setItems(listItems);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (!newItem) return;
-  //   // addItem Function
-  //   addItem(newItem);
-  //   setNewItem("");
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!newItem) return;
+    // addItem Function
+    addItem(newItem);
+    setNewItem("");
+  };
 
   return (
     <div className="App">
